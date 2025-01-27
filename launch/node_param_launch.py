@@ -7,7 +7,7 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 
 # Your camera namespace
-camera_name = 'my_camera'
+camera_name = 'arducam'
 
 # Location of configuration directory
 config_dir = os.path.join(get_package_share_directory('gscam2'), 'cfg')
@@ -18,7 +18,7 @@ params_file = os.path.join(config_dir, 'params.yaml')
 print(params_file)
 
 # Camera calibration file
-camera_config = 'file://' + os.path.join(config_dir, 'my_camera.ini')
+camera_config = 'file://' + os.path.join(config_dir, 'camera.ini')
 print(camera_config)
 
 
@@ -41,7 +41,7 @@ def generate_launch_description():
         ],
         # Remap outputs to the correct namespace
         remappings=[
-            ('/image_raw', '/' + camera_name + '/image_raw'),
+            ('/image_raw', '/' + camera_name + '/image'),
             ('/camera_info', '/' + camera_name + '/camera_info'),
         ],
     )
